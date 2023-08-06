@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:edunation/constants/constants.dart';
+import 'package:edunation/features/meditation/screens/m_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../onboarding/onboarding_screen.dart';
@@ -20,9 +22,12 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
+
+    ;
+
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 1700),
     );
 
     _fadeInAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -42,7 +47,10 @@ class _SplashScreenState extends State<SplashScreen>
     Timer(const Duration(milliseconds: 2200), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const OnBoardingScreen()),
+        MaterialPageRoute(
+            builder: (context) => firebaseAuth.currentUser != null
+                ? const MeditationHomeScreen()
+                : const OnBoardingScreen()),
       );
     });
   }
@@ -59,8 +67,9 @@ class _SplashScreenState extends State<SplashScreen>
             FadeTransition(
               opacity: _fadeInAnimation,
               child: SlideTransition(
-                position: Tween<Offset>(begin: const Offset(0, 0.1), end: Offset.zero)
-                    .animate(_slideUpAnimation),
+                position:
+                    Tween<Offset>(begin: const Offset(0, 0.1), end: Offset.zero)
+                        .animate(_slideUpAnimation),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Center(

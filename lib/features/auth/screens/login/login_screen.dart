@@ -139,6 +139,7 @@ class _LoginScreenState extends State<LoginScreen>
                     logIn(context);
                   },
                   style: ElevatedButton.styleFrom(
+                    primary: Colors.blue,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),

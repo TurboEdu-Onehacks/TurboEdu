@@ -2,6 +2,7 @@ import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:edunation/constants/constants.dart';
 import 'package:edunation/constants/utils.dart';
 import 'package:edunation/features/auth/models/user.dart';
+import 'package:edunation/features/options/screens/options_screen.dart';
 import 'package:flutter/material.dart';
 
 class AuthRepository {
@@ -21,6 +22,7 @@ class AuthRepository {
             .then((value) {
           showAwesomeSnackBar(context, ContentType.success, "Yayy!",
               "Yay! you are successfully signed up!");
+          moveScreen(context, OptionsScreen());
         });
       });
     } catch (e) {

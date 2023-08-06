@@ -178,9 +178,10 @@ class _SignUpScreenState extends State<SignUpScreen>
                         const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () {
-                            // Implement signup logic here
+                            signUp(context);
                           },
                           style: ElevatedButton.styleFrom(
+                            primary: Colors.blue,
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),

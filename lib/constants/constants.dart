@@ -15,3 +15,5 @@ String userName = "";
 String userUid = "";
 
 String userEmail = "";
+
+String userState = "";
