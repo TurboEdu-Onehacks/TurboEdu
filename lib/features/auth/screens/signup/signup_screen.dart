@@ -27,6 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen>
     UserModel model = UserModel(
         name: _nameController.text.trim(),
         uid: '',
+        state: 'peace',
         email: _emailController.text,
         password: _passwordController.text,
         coins: '0',
@@ -69,7 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(appName),
+        title: const Text(appName),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -180,7 +181,6 @@ class _SignUpScreenState extends State<SignUpScreen>
                             // Implement signup logic here
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.blue,
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -197,7 +197,7 @@ class _SignUpScreenState extends State<SignUpScreen>
                         const SizedBox(height: 10),
                         TextButton(
                           onPressed: () {
-                            moveScreen(context, LoginScreen());
+                            moveScreen(context, const LoginScreen());
                           },
                           child: const Text(
                             'Already have an account? Log in',

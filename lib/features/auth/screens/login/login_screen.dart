@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:edunation/constants/constants.dart';
 import 'package:edunation/constants/utils.dart';
 import 'package:edunation/features/auth/controllers/auth_controller.dart';
@@ -140,7 +139,6 @@ class _LoginScreenState extends State<LoginScreen>
                     logIn(context);
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),

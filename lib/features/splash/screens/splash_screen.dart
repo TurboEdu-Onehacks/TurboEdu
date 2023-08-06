@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 1500),
     );
 
     _fadeInAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -39,10 +39,10 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void navigateToOnboardingScreen() {
-    Timer(Duration(milliseconds: 2200), () {
+    Timer(const Duration(milliseconds: 2200), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => OnBoardingScreen()),
+        MaterialPageRoute(builder: (context) => const OnBoardingScreen()),
       );
     });
   }
@@ -55,11 +55,11 @@ class _SplashScreenState extends State<SplashScreen>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 200),
+            const SizedBox(height: 200),
             FadeTransition(
               opacity: _fadeInAnimation,
               child: SlideTransition(
-                position: Tween<Offset>(begin: Offset(0, 0.1), end: Offset.zero)
+                position: Tween<Offset>(begin: const Offset(0, 0.1), end: Offset.zero)
                     .animate(_slideUpAnimation),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -69,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen>
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        image: DecorationImage(
+                        image: const DecorationImage(
                           image: NetworkImage(
                             'https://images.hindustantimes.com/rf/image_size_640x362/HT/p2/2015/12/01/Pictures/_c34102da-9849-11e5-b4f4-1b7a09ed2cea.jpg',
                           ),
@@ -81,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             FadeTransition(
               opacity: _fadeInAnimation,
               child: Text(

@@ -62,7 +62,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
 
               InkWell(
                 onTap: () {
-                  moveScreen(context, SignUpScreen());
+                  moveScreen(context, const SignUpScreen());
                 },
                 child: Container(
                   width: double.infinity,

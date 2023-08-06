@@ -7,6 +7,7 @@ class UserModel {
   final String email;
   final String password;
   final String coins;
+  final String state;
   final String points;
   UserModel({
     required this.name,
@@ -14,6 +15,7 @@ class UserModel {
     required this.email,
     required this.password,
     required this.coins,
+    required this.state,
     required this.points,
   });
 
@@ -23,6 +25,7 @@ class UserModel {
     String? email,
     String? password,
     String? coins,
+    String? state,
     String? points,
   }) {
     return UserModel(
@@ -31,6 +34,7 @@ class UserModel {
       email: email ?? this.email,
       password: password ?? this.password,
       coins: coins ?? this.coins,
+      state: state ?? this.state,
       points: points ?? this.points,
     );
   }
@@ -42,6 +46,7 @@ class UserModel {
       'email': email,
       'password': password,
       'coins': coins,
+      'state': state,
       'points': points,
     };
   }
@@ -53,39 +58,44 @@ class UserModel {
       email: map['email'] as String,
       password: map['password'] as String,
       coins: map['coins'] as String,
+      state: map['state'] as String,
       points: map['points'] as String,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'UserModel(name: $name, uid: $uid, email: $email, password: $password, coins: $coins, points: $points)';
+    return 'UserModel(name: $name, uid: $uid, email: $email, password: $password, coins: $coins, state: $state, points: $points)';
   }
 
   @override
   bool operator ==(covariant UserModel other) {
     if (identical(this, other)) return true;
-
-    return other.name == name &&
-        other.uid == uid &&
-        other.email == email &&
-        other.password == password &&
-        other.coins == coins &&
-        other.points == points;
+  
+    return 
+      other.name == name &&
+      other.uid == uid &&
+      other.email == email &&
+      other.password == password &&
+      other.coins == coins &&
+      other.state == state &&
+      other.points == points;
   }
 
   @override
   int get hashCode {
     return name.hashCode ^
-        uid.hashCode ^
-        email.hashCode ^
-        password.hashCode ^
-        coins.hashCode ^
-        points.hashCode;
+      uid.hashCode ^
+      email.hashCode ^
+      password.hashCode ^
+      coins.hashCode ^
+      state.hashCode ^
+      points.hashCode;
   }
 }
+
+ 

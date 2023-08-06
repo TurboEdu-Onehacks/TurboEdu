@@ -66,7 +66,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             GestureDetector(
               onTap: () => _toggleState(false),
               child: Container(

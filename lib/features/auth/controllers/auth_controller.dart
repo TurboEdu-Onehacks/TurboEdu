@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class AuthController {
   // do something and call all the functions from the repository
 
-  AuthRepository _repository = AuthRepository();
+  final AuthRepository _repository = AuthRepository();
 
   void signUp(BuildContext context, UserModel model) {
     _repository.signUp(context, model);
