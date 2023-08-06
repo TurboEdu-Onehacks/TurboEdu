@@ -1,8 +1,8 @@
 import 'dart:async';
-
-import 'package:edunation/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:edunation/common/get_started_btn.dart';
+import '../../../constants/utils.dart';
+import 'mediation_screen.dart';
 
 class MeditationHomeScreen extends StatefulWidget {
   const MeditationHomeScreen({Key? key}) : super(key: key);
@@ -12,15 +12,19 @@ class MeditationHomeScreen extends StatefulWidget {
 }
 
 class _MeditationHomeScreenState extends State<MeditationHomeScreen> {
-  String? selectedOption;
+  String? selectedOption = "Easy Mode";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          appName,
-          style: GoogleFonts.poppins(color: Colors.black, fontSize: 22),
+        title: const Text(
+          'Meditation Time 😌',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
@@ -30,39 +34,84 @@ class _MeditationHomeScreenState extends State<MeditationHomeScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Center(
-                child: Text(
-                  "Meditation Time 😌",
-                  style: GoogleFonts.roboto(
-                    color: Colors.black,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               Container(
                 height: 250,
                 width: double.infinity,
                 margin: const EdgeInsets.symmetric(horizontal: 40),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(22),
-                    image: const DecorationImage(
-                        image: NetworkImage(
+                  borderRadius: BorderRadius.circular(22),
+                  image: DecorationImage(
+                    image: NetworkImage(
                       'https://images.unsplash.com/photo-1474418397713-7ede21d49118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=853&q=80',
-                    ))),
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      spreadRadius: 5,
+                      blurRadius: 10,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
               ),
-              Center(
-                child: SuperCoolButton(
+              SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 60),
+                child: ElevatedButton(
                   onPressed: () {
                     _showChooseOptionDialog();
                   },
-                  text: 'Choose Option',
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 16, horizontal: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  child: Text(
+                    'Choose Option',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 30),
+              Text(
+                'Selected Option:',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                selectedOption!,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 50),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: GetStartedButton(
+                  text: 'Get Started',
+                  onPressed: () {
+                    moveScreen(
+                      context,
+                      MeditationScreen(mode: selectedOption!),
+                      isPushReplacement: true,
+                    );
+                  },
                 ),
               ),
             ],
@@ -81,31 +130,16 @@ class _MeditationHomeScreenState extends State<MeditationHomeScreen> {
             borderRadius: BorderRadius.circular(20),
           ),
           content: Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                CustomButton(
-                  color: Colors.grey.shade100,
-                  label: 'Easy Mode',
-                  onTap: () => _onOptionSelected('Easy Mode'),
-                  isSelected: selectedOption == 'Easy Mode',
-                ),
-                SizedBox(height: 10),
-                CustomButton(
-                  color: Colors.green,
-                  label: 'Medium Mode',
-                  onTap: () => _onOptionSelected('Medium Mode'),
-                  isSelected: selectedOption == 'Medium Mode',
-                ),
-                SizedBox(height: 10),
-                CustomButton(
-                  color: Colors.orange,
-                  label: 'Hard Mode',
-                  onTap: () => _onOptionSelected('Hard Mode'),
-                  isSelected: selectedOption == 'Hard Mode',
-                ),
+                _buildOptionButton('Easy Mode', Colors.blue),
+                const SizedBox(height: 10),
+                _buildOptionButton('Medium Mode', Colors.green),
+                const SizedBox(height: 10),
+                _buildOptionButton('Hard Mode', Colors.orange),
               ],
             ),
           ),
@@ -114,102 +148,33 @@ class _MeditationHomeScreenState extends State<MeditationHomeScreen> {
     );
   }
 
+  Widget _buildOptionButton(String label, Color color) {
+    return ElevatedButton(
+      onPressed: () => _onOptionSelected(label),
+      style: ElevatedButton.styleFrom(
+        primary: selectedOption == label ? color : Colors.transparent,
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+          fontSize: 18,
+          color: selectedOption == label ? Colors.white : Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
   void _onOptionSelected(String option) {
     setState(() {
       selectedOption = option;
     });
-    Timer(Duration(milliseconds: 1200), () {
+    Timer(const Duration(milliseconds: 1200), () {
       Navigator.pop(context, selectedOption);
     });
-  }
-}
-
-class SuperCoolButton extends StatelessWidget {
-  final VoidCallback? onPressed;
-  final String text;
-
-  const SuperCoolButton({required this.onPressed, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      margin: const EdgeInsets.symmetric(horizontal: 70),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        gradient: LinearGradient(
-          colors: [Colors.purple, Colors.blue],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.blue.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onPressed,
-          borderRadius: BorderRadius.circular(30),
-          child: Center(
-            child: Text(
-              text,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CustomButton extends StatelessWidget {
-  final Color color;
-  final String label;
-  final VoidCallback? onTap;
-  final bool isSelected;
-
-  const CustomButton({
-    required this.color,
-    required this.label,
-    this.onTap,
-    this.isSelected = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        height: 50,
-        decoration: BoxDecoration(
-          color: isSelected ? color.withOpacity(0.8) : Colors.transparent,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: color,
-            width: 2,
-          ),
-        ),
-        child: Center(
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }
