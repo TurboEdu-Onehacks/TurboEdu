@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "350194378786",
-    "project_id": "edunation-9fae6",
-    "storage_bucket": "edunation-9fae6.appspot.com"
+    "project_number": "346328046264",
+    "project_id": "edunation-00d",
+    "storage_bucket": "edunation-00d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:350194378786:android:5184147f0fb73e79bfc27b",
-      "android_client_info": {
+        "mobilesdk_app_id": "1:346328046264:android:e63a9e97bd8603a2b7b24d",
+        "android_client_info": {
           "package_name": "com.example.edunation"
         }
       },
       "oauth_client": [
         {
-          "client_id": "350194378786-j461lfusm8ggmdr5dfvm65bbv6d19pgi.apps.googleusercontent.com",
+          "client_id": "346328046264-9qicrumjogfi2gvnds4vtri4baqt0336.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAUlN99epFu9KF1vQGyJuvfBGTu0QtoCBU"
+          "current_key": "AIzaSyDk_Ls617JKl-8F2REMFLhtnDUd5_bHBiE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "350194378786-j461lfusm8ggmdr5dfvm65bbv6d19pgi.apps.googleusercontent.com",
+              "client_id": "346328046264-9qicrumjogfi2gvnds4vtri4baqt0336.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
