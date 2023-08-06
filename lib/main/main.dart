@@ -9,6 +9,10 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
+  //pls run asap
+  // it takes a lot of time to run, idk why
+  //hmm
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

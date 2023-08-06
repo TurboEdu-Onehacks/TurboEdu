@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:edunation/constants/constants.dart';
+import 'package:edunation/constants/utils.dart';
+import 'package:edunation/features/auth/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -66,6 +68,9 @@ class _LoginScreenState extends State<LoginScreen>
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 FadeTransition(
                   opacity: _fadeAnimation,
@@ -138,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen>
                 const SizedBox(height: 10),
                 TextButton(
                   onPressed: () {
-                    // Implement sign-up navigation logic here
+                    moveScreen(context, const SignUpScreen());
                   },
                   child: const Text(
                     'Don\'t have an account? Sign up',
