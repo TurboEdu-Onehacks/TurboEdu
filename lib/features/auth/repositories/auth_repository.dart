@@ -8,16 +8,24 @@ class AuthRepository {
   void signUp(BuildContext context, UserModel model) {
     // sign up here
 
-    firebaseAuth
-        .createUserWithEmailAndPassword(
-            email: model.email, password: model.password)
-        .then((value) {
-      uid = firebaseAuth.currentUser?.uid ?? '';
-      firestore.collection('users').doc(uid).set(model.toMap());
-
-      showAwesomeSnackBar(context, ContentType.success, "Yayy!",
-          "Yay! you are successfully signed up!");
-    });
+    try {
+      firebaseAuth
+          .createUserWithEmailAndPassword(
+              email: model.email, password: model.password)
+          .then((value) {
+        userUid = firebaseAuth.currentUser?.uid ?? '';
+        firestore
+            .collection('users')
+            .doc(firebaseAuth.currentUser?.uid ?? '')
+            .set(model.toMap())
+            .then((value) {
+          showAwesomeSnackBar(context, ContentType.success, "Yayy!",
+              "Yay! you are successfully signed up!");
+        });
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 
   void login(BuildContext context, String email, String pass) {

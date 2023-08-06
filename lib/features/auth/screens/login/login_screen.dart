@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:edunation/constants/constants.dart';
 import 'package:edunation/constants/utils.dart';
+import 'package:edunation/features/auth/controllers/auth_controller.dart';
 import 'package:edunation/features/auth/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -46,6 +47,12 @@ class _LoginScreenState extends State<LoginScreen>
     _emailController.dispose();
     _passController.dispose();
     super.dispose();
+  }
+
+  void logIn(BuildContext context) {
+    AuthController controller = AuthController();
+
+    controller.logIn(context, _emailController.text, _passController.text);
   }
 
   @override
@@ -130,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen>
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    // Implement login logic here
+                    logIn(context);
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.blue,

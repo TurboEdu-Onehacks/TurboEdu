@@ -13,6 +13,6 @@ var firestore = FirebaseFirestore.instance;
 
 String userName = "";
 
-String uid = "";
+String userUid = "";
 
 String userEmail = "";
