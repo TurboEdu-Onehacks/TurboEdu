@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:edunation/constants/constants.dart';
-import 'package:edunation/features/meditation/screens/m_home_screen.dart';
+import 'package:edunation/features/meditation/screens/choose_mediation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../onboarding/onboarding_screen.dart';
@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen>
         context,
         MaterialPageRoute(
             builder: (context) => firebaseAuth.currentUser != null
-                ? const MeditationHomeScreen()
+                ? const ChooseMediationScreen()
                 : const OnBoardingScreen()),
       );
     });

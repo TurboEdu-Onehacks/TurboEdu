@@ -1,17 +1,17 @@
-import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:edunation/common/get_started_btn.dart';
 import '../../../constants/utils.dart';
 import 'mediation_screen.dart';
 
-class MeditationHomeScreen extends StatefulWidget {
-  const MeditationHomeScreen({Key? key}) : super(key: key);
+class ChooseMediationScreen extends StatefulWidget {
+  const ChooseMediationScreen({Key? key}) : super(key: key);
 
   @override
-  State<MeditationHomeScreen> createState() => _MeditationHomeScreenState();
+  State<ChooseMediationScreen> createState() => _ChooseMediationScreenState();
 }
 
-class _MeditationHomeScreenState extends State<MeditationHomeScreen> {
+class _ChooseMediationScreenState extends State<ChooseMediationScreen> {
   String? selectedOption = "Easy Mode";
 
   @override
@@ -173,8 +173,7 @@ class _MeditationHomeScreenState extends State<MeditationHomeScreen> {
     setState(() {
       selectedOption = option;
     });
-    Timer(const Duration(milliseconds: 1200), () {
-      Navigator.pop(context, selectedOption);
-    });
+
+    Navigator.pop(context, selectedOption);
   }
 }

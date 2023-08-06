@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:edunation/constants/utils.dart';
-import 'package:edunation/features/meditation/screens/m_home_screen.dart';
+import 'package:edunation/features/meditation/screens/choose_mediation_screen.dart';
 import 'package:flutter/material.dart';
 
 class MeditationScreen extends StatefulWidget {
@@ -68,11 +68,11 @@ class _MeditationScreenState extends State<MeditationScreen>
     setState(() {
       remainingTime = 0;
     });
-    moveScreen(context, MeditationHomeScreen());
+    moveScreen(context, ChooseMediationScreen());
   }
 
   void showRandomThought() {
-    const int intervalInSeconds = 10;
+    const int intervalInSeconds = 5;
     int currentIndex = 0;
 
     Timer.periodic(Duration(seconds: intervalInSeconds), (timer) {

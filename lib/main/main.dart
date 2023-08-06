@@ -1,5 +1,5 @@
-
-import 'package:edunation/features/meditation/screens/m_home_screen.dart';
+import 'package:edunation/features/meditation/screens/choose_mediation_screen.dart';
+import 'package:edunation/features/meditation/screens/mediation_home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
