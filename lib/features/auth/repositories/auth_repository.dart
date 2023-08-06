@@ -12,6 +12,9 @@ class AuthRepository {
         .createUserWithEmailAndPassword(
             email: model.email, password: model.password)
         .then((value) {
+      uid = firebaseAuth.currentUser?.uid ?? '';
+      firestore.collection('users').doc(uid).set(model.toMap());
+
       showAwesomeSnackBar(context, ContentType.success, "Yayy!",
           "Yay! you are successfully signed up!");
     });

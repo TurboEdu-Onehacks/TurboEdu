@@ -8,3 +8,11 @@ const appName = "Edunation";
 
 var firebaseAuth = FirebaseAuth.instance;
 var firestore = FirebaseFirestore.instance;
+
+// some user vars
+
+String userName = "";
+
+String uid = "";
+
+String userEmail = "";

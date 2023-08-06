@@ -1,11 +1,10 @@
-import 'dart:async';
-import 'dart:io';
 import 'package:edunation/constants/constants.dart';
 import 'package:edunation/constants/utils.dart';
+import 'package:edunation/features/auth/controllers/auth_controller.dart';
+import 'package:edunation/features/auth/models/user.dart';
 import 'package:edunation/features/auth/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -16,19 +15,34 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen>
     with SingleTickerProviderStateMixin {
-  late File _profileImage;
-  final picker = ImagePicker();
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
 
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+
+  void signUp(BuildContext context) {
+    UserModel model = UserModel(
+        name: _nameController.text.trim(),
+        uid: '',
+        email: _emailController.text,
+        password: _passwordController.text,
+        coins: '0',
+        points: '0');
+
+    AuthController controller = AuthController();
+    controller.signUp(context, model);
+  }
+
   @override
   void initState() {
     super.initState();
-    _profileImage = File(''); // Set a default or placeholder image.
+    // Set a default or placeholder image.
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 800),
     );
 
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -42,19 +56,12 @@ class _SignUpScreenState extends State<SignUpScreen>
     _animationController.forward();
   }
 
-  Future<void> _pickProfilePicture() async {
-    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
-
-    if (pickedImage != null) {
-      setState(() {
-        _profileImage = File(pickedImage.path);
-      });
-    }
-  }
-
   @override
   void dispose() {
     _animationController.dispose();
+    _nameController.dispose();
+    _passwordController.dispose();
+    _emailController.dispose();
     super.dispose();
   }
 
@@ -91,7 +98,6 @@ class _SignUpScreenState extends State<SignUpScreen>
                 child: ScaleTransition(
                   scale: _scaleAnimation,
                   child: GestureDetector(
-                    onTap: _pickProfilePicture,
                     child: const Stack(
                       alignment: Alignment.center,
                       children: [
