@@ -6,5 +6,5 @@ const appName = "Edunation";
 
 //firebase constants
 
-var firebase_auth = FirebaseAuth.instance;
+var firebaseAuth = FirebaseAuth.instance;
 var firestore = FirebaseFirestore.instance;

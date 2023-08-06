@@ -14,6 +14,9 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen>
     with SingleTickerProviderStateMixin {
+  final _emailController = TextEditingController();
+  final _passController = TextEditingController();
+
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
@@ -40,6 +43,8 @@ class _LoginScreenState extends State<LoginScreen>
   @override
   void dispose() {
     _animationController.dispose();
+    _emailController.dispose();
+    _passController.dispose();
     super.dispose();
   }
 
@@ -104,6 +109,7 @@ class _LoginScreenState extends State<LoginScreen>
                 const SizedBox(height: 20),
                 TextFormField(
                   style: const TextStyle(color: Colors.black),
+                  controller: _emailController,
                   decoration: const InputDecoration(
                     labelText: 'Email',
                     labelStyle: TextStyle(color: Colors.black),
@@ -112,6 +118,7 @@ class _LoginScreenState extends State<LoginScreen>
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
+                  controller: _passController,
                   obscureText: true,
                   style: const TextStyle(color: Colors.black),
                   decoration: const InputDecoration(

@@ -1,9 +1,14 @@
 import 'package:edunation/features/splash/screens/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,7 +17,7 @@ class MyApp extends StatelessWidget {
   //pls run asap
   // it takes a lot of time to run, idk why
   //hmm
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
