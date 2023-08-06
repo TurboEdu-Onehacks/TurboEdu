@@ -1,3 +1,5 @@
+import 'package:edunation/constants/utils.dart';
+import 'package:edunation/features/meditation/screens/m_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,7 +23,10 @@ class _OptionsScreenState extends State<OptionsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          onPressed: () {}, child: Icon(Icons.arrow_circle_right_outlined)),
+          onPressed: () {
+            moveScreen(context, MeditationHomeScreen());
+          },
+          child: Icon(Icons.arrow_circle_right_outlined)),
       backgroundColor: Colors.blue[200],
       appBar: AppBar(
         title: Text(appName,
