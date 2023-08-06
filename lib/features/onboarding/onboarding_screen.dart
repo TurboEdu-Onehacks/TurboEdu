@@ -1,3 +1,5 @@
+import 'package:edunation/constants/utils.dart';
+import 'package:edunation/features/auth/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -58,21 +60,26 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
               ),
               //custom get started button
 
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.symmetric(horizontal: 50),
-                height: 50,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  "Get Started -> ",
-                  style: GoogleFonts.roboto(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
+              InkWell(
+                onTap: () {
+                  moveScreen(context, SignUpScreen());
+                },
+                child: Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.symmetric(horizontal: 50),
+                  height: 50,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    "Get Started -> ",
+                    style: GoogleFonts.roboto(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
