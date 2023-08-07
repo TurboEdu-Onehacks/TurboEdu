@@ -1,7 +1,9 @@
 import 'package:edunation/constants/utils.dart';
 import 'package:edunation/features/meditation/screens/choose_mediation_screen.dart';
 import 'package:edunation/features/meditation_activities_screen.dart/screens/meditation_activites_screen.dart';
+import 'package:edunation/features/study/s_home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class MeditationHomeScreen extends StatefulWidget {
@@ -12,6 +14,7 @@ class MeditationHomeScreen extends StatefulWidget {
 }
 
 class _MeditationHomeScreenState extends State<MeditationHomeScreen> {
+  bool changeState = false;
   String? selectedOption = "Easy Mode";
 
   @override
@@ -21,17 +24,46 @@ class _MeditationHomeScreenState extends State<MeditationHomeScreen> {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: AppBar(
-        elevation: 0.0,
-        title: Text(
-          'Meditation Time 😌',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              InkWell(
+                child: Text(
+                  "Meditation Time!",
+                  style: GoogleFonts.poppins(
+                    color: Colors.black,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                onTap: () {
+                  setState(() {
+                    changeState = !changeState;
+                  });
+                },
+              ),
+              changeState
+                  ? TextButton(
+                      onPressed: () {
+                        moveScreen(context, SHomeScreen());
+                      },
+                      child: Text(
+                        "Study",
+                        style: TextStyle(color: Colors.green, fontSize: 22),
+                      ))
+                  : Container(),
+              IconButton(
+                icon:
+                    changeState ? Icon(Icons.cut) : Icon(Icons.arrow_drop_down),
+                onPressed: () {
+                  setState(() {
+                    changeState = !changeState;
+                  });
+                },
+              ),
+            ]),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
       ),
       body: ListView(
         physics: BouncingScrollPhysics(), // Allow natural scrolling

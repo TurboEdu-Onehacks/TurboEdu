@@ -1,7 +1,12 @@
+import 'package:edunation/constants/constants.dart';
+import 'package:edunation/constants/utils.dart';
+import 'package:edunation/features/meditation/screens/mediation_home_screen.dart';
 import 'package:edunation/features/study/Create_Quiz.dart';
 import 'package:edunation/features/study/create_flash_card.dart';
+import 'package:edunation/features/study/learn_screen.dart';
 import 'package:edunation/features/study/questionScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SHomeScreen extends StatefulWidget {
   const SHomeScreen({super.key});
@@ -21,7 +26,14 @@ class _SHomeScreenState extends State<SHomeScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               InkWell(
-                child: Text("Study"),
+                child: Text(
+                  "Study Time!",
+                  style: GoogleFonts.poppins(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
                 onTap: () {
                   setState(() {
                     changeState = !changeState;
@@ -30,7 +42,9 @@ class _SHomeScreenState extends State<SHomeScreen> {
               ),
               changeState
                   ? TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        moveScreen(context, MeditationHomeScreen());
+                      },
                       child: Text(
                         "Peace",
                         style: TextStyle(color: Colors.black, fontSize: 22),
@@ -78,7 +92,7 @@ class _SHomeScreenState extends State<SHomeScreen> {
                     ),
                     ListTile(
                       title: Text(
-                        "Create Flash card",
+                        "Create Flash cards",
                         style: TextStyle(fontSize: 20),
                       ),
                       subtitle: Text(
@@ -135,39 +149,45 @@ class _SHomeScreenState extends State<SHomeScreen> {
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 243, 243, 243),
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
-              child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: Image.network(
-                      "https://educloud.app/lms/src/timetable/hero.png",
-                      height: 150,
+            child: InkWell(
+              onTap: () {
+                moveScreen(context, LearnScreen());
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 243, 243, 243),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: Column(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: Image.network(
+                        "https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+                        fit: BoxFit.cover,
+                        height: 150,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  ListTile(
-                    title: Text(
-                      "Create Time Table",
-                      style: TextStyle(fontSize: 20),
+                    SizedBox(
+                      height: 10,
                     ),
-                    subtitle: Text(
-                      "Time tables structure study sessions, promote consistency, prioritize tasks, reduce procrastination, enhance focus, optimize retention, and manage workload efficiently.",
-                      softWrap: true,
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  )
-                ],
+                    ListTile(
+                      title: Text(
+                        "Want to learn something?",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      subtitle: Text(
+                        "We should never stop learning, with the power of AI, we can learn a lot, even more than before! so why not give it a shot with $appName ;)?",
+                        softWrap: true,
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          )
+          ),
         ],
       )),
     );

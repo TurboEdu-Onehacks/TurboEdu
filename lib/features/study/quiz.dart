@@ -19,10 +19,10 @@ class _QuizState extends State<Quiz> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: ElevatedButton(
-        child: Text("Create Quiz"),
-        onPressed: () async {
-          final res = await http.post(
+        child: ElevatedButton(
+          child: Text("Create Quiz"),
+          onPressed: () async {
+            final res = await http.post(
               Uri.parse("https://api.openai.com/v1/chat/completions"),
               headers: {
                 "Content-Type": "application/json",
@@ -38,37 +38,56 @@ class _QuizState extends State<Quiz> {
                   }
                 ],
                 "temperature": 0.7
-              }));
-          print(res.body);
-          String formattedBody =
-              jsonDecode(res.body)["choices"][0]["message"]["content"];
-          List<String> formattedBodyList = formattedBody
-              .replaceAll("\\", "")
-              .replaceAll("]", "")
-              .replaceAll("[", "")
-              .split("\n");
-          List<String> RemoveRangeOfLIst(List<String> list, start, end) {
-            List<String> listOfRange = list;
-            listOfRange.removeRange(start, end);
-            return listOfRange;
-          }
+              }),
+            );
 
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (c) => QuestionScreen(
-                question: formattedBodyList[0],
-                MCQ1: formattedBodyList[1],
-                MCQ2: formattedBodyList[2],
-                MCQ3: formattedBodyList[3],
-                MCQ4: formattedBodyList[4],
-                correctAns: formattedBodyList[5],
-                remainingTextList: RemoveRangeOfLIst(formattedBodyList, 0, 5),
-              ),
-            ),
-          );
-        },
-      )),
+            if (res.statusCode == 200) {
+              Map<String, dynamic> responseBody = jsonDecode(res.body);
+              List<dynamic> choices = responseBody["choices"];
+
+              if (choices.isNotEmpty) {
+                Map<String, dynamic> message = choices[0]["message"];
+                String formattedBody = message["content"];
+
+                List<String> formattedBodyList = formattedBody
+                    .replaceAll("\\", "")
+                    .replaceAll("]", "")
+                    .replaceAll("[", "")
+                    .split("\n");
+
+                List<String> RemoveRangeOfList(
+                    List<String> list, int start, int end) {
+                  List<String> listOfRange = list;
+                  listOfRange.removeRange(start, end);
+                  return listOfRange;
+                }
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (c) => QuestionScreen(
+                      question: formattedBodyList[0],
+                      MCQ1: formattedBodyList[1],
+                      MCQ2: formattedBodyList[2],
+                      MCQ3: formattedBodyList[3],
+                      MCQ4: formattedBodyList[4],
+                      correctAns: formattedBodyList[5],
+                      remainingTextList:
+                          RemoveRangeOfList(formattedBodyList, 0, 5),
+                    ),
+                  ),
+                );
+              } else {
+                // Handle case where 'choices' is empty or null
+                print("No 'choices' found in the response.");
+              }
+            } else {
+              // Handle HTTP request error
+              print("Error: ${res.statusCode} - ${res.reasonPhrase}");
+            }
+          },
+        ),
+      ),
     );
   }
 }

@@ -124,8 +124,7 @@ class _GrammarCheckerScreenState extends State<GrammarCheckerScreen> {
       _isLoading = true;
     });
 
-    final apiKey =
-        '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'; // Replace with your actual API key.
+    String apiKey = "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";
     final endpoint =
         'https://api.openai.com/v1/engines/text-davinci-002/completions';
 

@@ -1,6 +1,7 @@
 import 'dart:async';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:edunation/constants/utils.dart';
-import 'package:edunation/features/meditation/screens/choose_mediation_screen.dart';
+import 'package:edunation/features/meditation/screens/mediation_home_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../compliments/screens/well_done_screen.dart';
@@ -16,6 +17,8 @@ class MeditationScreen extends StatefulWidget {
 
 class _MeditationScreenState extends State<MeditationScreen>
     with TickerProviderStateMixin {
+  AudioPlayer _audioPlayer = AudioPlayer();
+
   int remainingTime = 50;
   Timer? timer;
   final List<String> randomThoughts = [
@@ -32,6 +35,7 @@ class _MeditationScreenState extends State<MeditationScreen>
 
   @override
   void initState() {
+    _audioPlayer.play(AssetSource("sounds/meditation_sound.mp3"));
     super.initState();
 
     if (widget.mode == "Easy Mode") {
@@ -50,6 +54,9 @@ class _MeditationScreenState extends State<MeditationScreen>
   @override
   void dispose() {
     timer?.cancel();
+    _audioPlayer.stop();
+    _audioPlayer.dispose();
+
     super.dispose();
   }
 
@@ -60,6 +67,7 @@ class _MeditationScreenState extends State<MeditationScreen>
           remainingTime--;
         } else {
           timer.cancel();
+          _audioPlayer.stop();
           moveScreen(context, WellDoneScreen());
         }
       });
@@ -71,7 +79,7 @@ class _MeditationScreenState extends State<MeditationScreen>
     setState(() {
       remainingTime = 0;
     });
-    moveScreen(context, ChooseMediationScreen());
+    moveScreen(context, MeditationHomeScreen());
   }
 
   void showRandomThought() {

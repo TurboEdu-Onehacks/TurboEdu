@@ -127,7 +127,7 @@ class _RephraseTextScreenState extends State<RephraseTextScreen> {
     });
 
     final endpoint =
-        'https://api.openai.com/v1/engines/davinci-codex/completions';
+        'https://api.openai.com/v1/engines/text-davinci-002/completions';
 
     try {
       final response = await http.post(
