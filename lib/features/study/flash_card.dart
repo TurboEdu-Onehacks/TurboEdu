@@ -10,7 +10,7 @@ Future<String> useChatAPI(String prompt) async {
       Uri.parse("https://api.openai.com/v1/chat/completions"),
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer keyHere"
+        "Authorization": "Bearer $openaiAPIKEY"
       },
       body: jsonEncode({
         "model": "gpt-3.5-turbo",
@@ -106,6 +106,7 @@ class _FlashCardState extends State<FlashCard> {
       body: res == null
           ? Center(
               child: ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
               child: Text(
                 "Create flash card",
                 style: TextStyle(color: Colors.white),

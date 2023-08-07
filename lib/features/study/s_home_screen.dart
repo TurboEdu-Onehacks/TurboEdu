@@ -1,3 +1,4 @@
+import 'package:edunation/features/study/Create_Quiz.dart';
 import 'package:edunation/features/study/create_flash_card.dart';
 import 'package:edunation/features/study/questionScreen.dart';
 import 'package:flutter/material.dart';
@@ -96,16 +97,7 @@ class _SHomeScreenState extends State<SHomeScreen> {
             child: InkWell(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (c) => QuestionScren(
-                              question:
-                                  "What is the biggest cell in the human body?",
-                              MCQ1: "Nerve cell",
-                              MCQ2: "Brain Cell",
-                              MCQ3: "Blood cell",
-                              MCQ4: "Skin cell",
-                            )));
+                    context, MaterialPageRoute(builder: (c) => CreateQuiz()));
               },
               child: Container(
                 padding: EdgeInsets.all(10),
