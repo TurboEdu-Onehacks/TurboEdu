@@ -1,5 +1,6 @@
 import 'package:edunation/constants/utils.dart';
 import 'package:edunation/features/meditation/screens/choose_mediation_screen.dart';
+import 'package:edunation/features/meditation_activities_screen.dart/screens/meditation_activites_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -126,7 +127,9 @@ class _MeditationHomeScreenState extends State<MeditationHomeScreen> {
                   ),
                   SizedBox(height: 30),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      moveScreen(context, MeditationActivitiesScreen());
+                    },
                     child: Container(
                       width: size.width * 0.6,
                       height: size.height * 0.07,
