@@ -3,6 +3,8 @@ import 'package:edunation/constants/utils.dart';
 import 'package:edunation/features/meditation/screens/choose_mediation_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../compliments/screens/well_done_screen.dart';
+
 class MeditationScreen extends StatefulWidget {
   final String mode;
 
@@ -58,6 +60,7 @@ class _MeditationScreenState extends State<MeditationScreen>
           remainingTime--;
         } else {
           timer.cancel();
+          moveScreen(context, WellDoneScreen());
         }
       });
     });
