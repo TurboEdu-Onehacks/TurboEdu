@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "346328046264",
-    "project_id": "edunation-00d",
-    "storage_bucket": "edunation-00d.appspot.com"
+    "project_number": "68570960215",
+    "project_id": "edunation-revenge-00d",
+    "storage_bucket": "edunation-revenge-00d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:346328046264:android:e63a9e97bd8603a2b7b24d",
+        "mobilesdk_app_id": "1:68570960215:android:e462e08c9c787b1c742e12",
         "android_client_info": {
           "package_name": "com.example.edunation"
         }
       },
       "oauth_client": [
         {
-          "client_id": "346328046264-9qicrumjogfi2gvnds4vtri4baqt0336.apps.googleusercontent.com",
+          "client_id": "68570960215-oj1obebsvvpnghq1htsh45m7vgktofb2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDk_Ls617JKl-8F2REMFLhtnDUd5_bHBiE"
+          "current_key": "AIzaSyATbb6iJV2k_CKJyEukwj3YgjkjBBjujss"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "346328046264-9qicrumjogfi2gvnds4vtri4baqt0336.apps.googleusercontent.com",
+              "client_id": "68570960215-oj1obebsvvpnghq1htsh45m7vgktofb2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
