@@ -54,7 +54,7 @@ class _RelaxingLiquidScreenState extends State<RelaxingLiquidScreen>
           'Infinite Relaxer',
           style: GoogleFonts.poppins(
             color: Colors.black,
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: FontWeight.w600,
           ),
         ),
