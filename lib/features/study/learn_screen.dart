@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:edunation/credentials.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -42,7 +43,7 @@ class _LearnScreenState extends State<LearnScreen> {
     try {
       if (userQuestion.isNotEmpty) {
         // Replace YOUR_API_KEY with your actual OpenAI GPT-3 API key
-        String apiKey = "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";
+        String apiKey = Credentials().apiKey;
         String prompt =
             "Teacher: Please answer the following question - $userQuestion";
 

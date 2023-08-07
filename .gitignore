@@ -10,6 +10,11 @@
 .svn/
 migrate_working_dir/
 
+lib/credentials.dart
+credentials.dart
+lib/credentails
+credentials
+
 # IntelliJ related
 *.iml
 *.ipr

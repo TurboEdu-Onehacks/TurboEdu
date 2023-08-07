@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:edunation/credentials.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -124,7 +125,7 @@ class _GrammarCheckerScreenState extends State<GrammarCheckerScreen> {
       _isLoading = true;
     });
 
-    String apiKey = "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";
+    String apiKey = Credentials().apiKey;
     final endpoint =
         'https://api.openai.com/v1/engines/text-davinci-002/completions';
 

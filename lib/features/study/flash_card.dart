@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:html';
 
 import 'package:edunation/constants/constants.dart';
+import 'package:edunation/credentials.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -10,7 +12,7 @@ Future<String> useChatAPI(String prompt) async {
       Uri.parse("https://api.openai.com/v1/chat/completions"),
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer $openaiAPIKEY"
+        "Authorization": "Bearer ${Credentials().apiKey}"
       },
       body: jsonEncode({
         "model": "gpt-3.5-turbo",

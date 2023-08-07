@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'dart:html';
 
 import 'package:edunation/features/study/questionScreen.dart';
 import 'package:flutter/material.dart';
 import "package:http/http.dart" as http;
 
 import '../../constants/constants.dart';
+import '../../credentials.dart';
 
 class Quiz extends StatefulWidget {
   String? text;
@@ -26,7 +28,7 @@ class _QuizState extends State<Quiz> {
               Uri.parse("https://api.openai.com/v1/chat/completions"),
               headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer $openaiAPIKEY"
+                "Authorization": "Bearer ${Credentials().apiKey}"
               },
               body: jsonEncode({
                 "model": "gpt-3.5-turbo",
