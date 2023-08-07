@@ -69,6 +69,7 @@ flutter:
     - assets/sounds/ocean_waves.mp3
     - assets/sounds/rain.mp3
     - assets/sounds/forest.mp3
+    - assets/sounds/sound.mp3
     - assets/sounds/meditation_sound.mp3
     - assets/sounds/campfire.mp3
     - assets/sounds/waterfall.mp3

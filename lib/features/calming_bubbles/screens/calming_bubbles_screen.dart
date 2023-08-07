@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class CalmingBubblesScreen extends StatefulWidget {
   @override
@@ -12,11 +12,19 @@ class _CalmingBubblesScreenState extends State<CalmingBubblesScreen> {
   List<Bubble> bubbles = [];
   Color selectedColor = Colors.blue; // Default color
 
+  final AudioPlayer _audioCache = AudioPlayer();
+
   void _onTapDown(TapDownDetails details) {
     setState(() {
       bubbles
           .add(Bubble(position: details.localPosition, color: selectedColor));
     });
+    _playClickSound(); // Play the click sound when a bubble is created
+  }
+
+  void _playClickSound() async {
+    // Replace 'assets/click_sound.mp3' with your sound file path
+    await _audioCache.play(AssetSource('sounds/sound.mp3'));
   }
 
   void _clearBubbles() {
@@ -60,7 +68,7 @@ class _CalmingBubblesScreenState extends State<CalmingBubblesScreen> {
       appBar: AppBar(
         title: Text(
           'The healing bubbles',
-          style: GoogleFonts.poppins(
+          style: TextStyle(
             color: Colors.black,
             fontSize: 18,
             fontWeight: FontWeight.w600,
