@@ -6,11 +6,11 @@ import 'package:edunation/features/options/screens/options_screen.dart';
 import 'package:flutter/material.dart';
 
 class AuthRepository {
-  void signUp(BuildContext context, UserModel model) {
+  void signUp(BuildContext context, UserModel model) async {
     // sign up here
 
     try {
-      firebaseAuth
+      await firebaseAuth
           .createUserWithEmailAndPassword(
               email: model.email, password: model.password)
           .then((value) {

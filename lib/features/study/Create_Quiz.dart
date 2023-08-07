@@ -1,22 +1,16 @@
-import 'dart:io';
-import 'dart:math';
-
-import 'package:file_picker/file_picker.dart';
+import 'package:edunation/features/study/quiz.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:read_pdf_text/read_pdf_text.dart';
 
-import 'flash_card.dart';
-
-class CreateFlashCard extends StatefulWidget {
-  const CreateFlashCard({super.key});
+class CreateQuiz extends StatefulWidget {
+  const CreateQuiz({super.key});
 
   @override
-  State<CreateFlashCard> createState() => _CreateFlashCardState();
+  State<CreateQuiz> createState() => _CreateQuizState();
 }
 
-class _CreateFlashCardState extends State<CreateFlashCard> {
+class _CreateQuizState extends State<CreateQuiz> {
   InputImage? image;
   ImagePicker imagePicker = ImagePicker();
   String result = "";
@@ -35,8 +29,12 @@ class _CreateFlashCardState extends State<CreateFlashCard> {
       String text = recognizedText.text;
       result += text;
     }
-    Navigator.push(context,
-        MaterialPageRoute(builder: (c) => FlashCard(textInput: result)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (c) => Quiz(
+                  text: result,
+                )));
   }
 
   pickImageFromCameraAndRecognize() async {
@@ -50,8 +48,12 @@ class _CreateFlashCardState extends State<CreateFlashCard> {
         await textRecognizer.processImage(image!);
     String text = recognizedText.text;
     result = text;
-    Navigator.push(context,
-        MaterialPageRoute(builder: (c) => FlashCard(textInput: result)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (c) => Quiz(
+                  text: result,
+                )));
   }
 
   @override
@@ -60,33 +62,28 @@ class _CreateFlashCardState extends State<CreateFlashCard> {
       body: !loading
           ? Center(
               child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                child: Text("Please share the iamge of the chapter"),
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            title: Text("Choose by which mode"),
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    pickImageFromCameraAndRecognize();
+                                  },
+                                  child: Text("Camera")),
+                              TextButton(
+                                  onPressed: () {
+                                    pickImageFromGalleryAndRecognize();
+                                  },
+                                  child: Text("Gallery")),
+                            ],
+                          ));
+                },
               ),
-              child: Text(
-                "Upload image of your chanpter",
-                style: TextStyle(color: Colors.white),
-              ),
-              onPressed: () async {
-                showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                          title: Text("Choose by which mode"),
-                          actions: [
-                            TextButton(
-                                onPressed: () {
-                                  pickImageFromCameraAndRecognize();
-                                },
-                                child: Text("Camera")),
-                            TextButton(
-                                onPressed: () {
-                                  pickImageFromGalleryAndRecognize();
-                                },
-                                child: Text("Gallery")),
-                          ],
-                        ));
-              },
-            ))
+            )
           : Center(
               child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.75,

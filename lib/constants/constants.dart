@@ -17,3 +17,4 @@ String userUid = "";
 String userEmail = "";
 
 String userState = "";
+String openaiAPIKEY = "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";

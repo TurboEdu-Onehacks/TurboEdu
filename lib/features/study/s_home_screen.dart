@@ -1,4 +1,6 @@
+import 'package:edunation/features/study/Create_Quiz.dart';
 import 'package:edunation/features/study/create_flash_card.dart';
+import 'package:edunation/features/study/questionScreen.dart';
 import 'package:flutter/material.dart';
 
 class SHomeScreen extends StatefulWidget {
@@ -92,36 +94,42 @@ class _SHomeScreenState extends State<SHomeScreen> {
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 243, 243, 243),
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
-              child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      "assets/images/question.png",
-                      height: 150,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (c) => CreateQuiz()));
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 243, 243, 243),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: Column(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        "assets/images/question.png",
+                        height: 150,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  ListTile(
-                    title: Text(
-                      "Create quiz",
-                      style: TextStyle(fontSize: 20),
+                    SizedBox(
+                      height: 10,
                     ),
-                    subtitle: Text(
-                      "Enhances understanding, improves memory, encourages critical thinking, fosters curiosity, reinforces learning, boosts confidence, develops problem-solving skills, promotes active engagement, deepens knowledge.",
-                      softWrap: true,
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  )
-                ],
+                    ListTile(
+                      title: Text(
+                        "Create quiz",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      subtitle: Text(
+                        "Enhances understanding, improves memory, encourages critical thinking, fosters curiosity, reinforces learning, boosts confidence, develops problem-solving skills, promotes active engagement, deepens knowledge.",
+                        softWrap: true,
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
