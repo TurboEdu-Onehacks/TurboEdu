@@ -124,7 +124,37 @@ class _MeditationHomeScreenState extends State<MeditationHomeScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 90),
+                  SizedBox(height: 30),
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      width: size.width * 0.6,
+                      height: size.height * 0.07,
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Calming activites!',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: HexColor('#9bcfa9'),
+                        boxShadow: [
+                          BoxShadow(
+                            color: HexColor('#67c27f').withOpacity(0.5),
+                            blurRadius: 8,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   InkWell(
                     onTap: () {
                       moveScreen(context, const ChooseMediationScreen(),
