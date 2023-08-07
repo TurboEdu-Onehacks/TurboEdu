@@ -1,6 +1,4 @@
-import 'package:edunation/features/auth/screens/signup/signup_screen.dart';
-import 'package:edunation/features/meditation/screens/mediation_home_screen.dart';
-import 'package:edunation/features/meditation_activities_screen.dart/screens/meditation_activites_screen.dart';
+import 'package:edunation/features/study/rephrase_text.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SignUpScreen(),
+      home: RephraseTextScreen(),
     );
   }
 }

@@ -58,35 +58,38 @@ class _MeditationHomeScreenState extends State<MeditationHomeScreen> {
                   SizedBox(height: 0),
                   Container(
                     width: size.width * 0.8,
-                    height: size.height * 0.4,
+                    height: size.height * 0.3,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: NetworkImage(
-                          'https://images.unsplash.com/photo-1528360983275-8d084bccf5f2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80',
+                          'https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWVkaXRhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60',
                         ),
                         fit: BoxFit.cover,
                       ),
                       borderRadius: BorderRadius.circular(22),
                     ),
                     alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(
-                      'MEDITATION TIME!',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 41,
-                        fontWeight: FontWeight.bold,
-                        shadows: [
-                          Shadow(
-                            color: Colors.black,
-                            blurRadius: 2,
-                            offset: Offset(1, 1),
-                          ),
-                        ],
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Text(
+                        'MEDITATION TIME!',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 41,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                              color: Colors.black,
+                              blurRadius: 2,
+                              offset: Offset(1, 1),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 0),
+                  SizedBox(height: 30),
                   Container(
                     width: size.width * 0.8,
                     padding: EdgeInsets.all(20),
