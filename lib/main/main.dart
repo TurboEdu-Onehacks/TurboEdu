@@ -1,4 +1,4 @@
-import 'package:edunation/features/auth/screens/signup/signup_screen.dart';
+
 import 'package:edunation/features/options/screens/options_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
