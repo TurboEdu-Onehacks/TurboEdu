@@ -188,6 +188,21 @@ class _SHomeScreenState extends State<SHomeScreen> {
               ),
             ),
           ),
+          const SizedBox(
+            height: 40,
+          ),
+          Center(
+            child: Text(
+              "Made with 💖 by Armaan, Steven and Varun!",
+              style: GoogleFonts.poppins(
+                  color: Colors.blue,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
         ],
       )),
     );

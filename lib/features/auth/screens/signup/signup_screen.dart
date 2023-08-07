@@ -3,6 +3,7 @@ import 'package:edunation/constants/utils.dart';
 import 'package:edunation/features/auth/controllers/auth_controller.dart';
 import 'package:edunation/features/auth/models/user.dart';
 import 'package:edunation/features/auth/screens/login/login_screen.dart';
+import 'package:edunation/features/options/screens/options_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -24,17 +25,21 @@ class _SignUpScreenState extends State<SignUpScreen>
   final TextEditingController _emailController = TextEditingController();
 
   void signUp(BuildContext context) {
-    UserModel model = UserModel(
-        name: _nameController.text.trim(),
-        uid: '',
-        state: 'peace',
-        email: _emailController.text,
-        password: _passwordController.text,
-        coins: '0',
-        points: '0');
+    // some bugs in firebase, (using static for now)
 
-    AuthController controller = AuthController();
-    controller.signUp(context, model);
+    // UserModel model = UserModel(
+    //     name: _nameController.text.trim(),
+    //     uid: '',
+    //     state: 'peace',
+    //     email: _emailController.text,
+    //     password: _passwordController.text,
+    //     coins: '0',
+    //     points: '0');
+
+    // AuthController controller = AuthController();
+    // controller.signUp(context, model);
+
+    moveScreen(context, OptionsScreen());
   }
 
   @override
