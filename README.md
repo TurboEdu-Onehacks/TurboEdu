@@ -27,7 +27,7 @@ TurboEdu offers interactive flashcards that aid in reinforcing key concepts. Use
 Flashcards are a key component to efficient studying, but you also need to test yourself to prove that you have gained new knowledge. Quizzes are the right way to go.
 
 ### 5. **AI Powered**
-Would it be an app in 2023 if it wasn't ai powered?
+Would it be an app in 2023 if it wasn't ai powered? We have an ai teacher that is personalized to help you study faster.
 
 ## How to Get Started (Currently unavailable)
 
