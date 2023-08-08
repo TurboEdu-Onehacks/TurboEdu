@@ -35,7 +35,7 @@ class _QuizState extends State<Quiz> {
                   {
                     "role": "user",
                     "content":
-                        "Act as a Teacher create a MCQ quiz for your student the quiz question and answer should be enclosed in square bracket and quiz answers should be in square bracket  don't type anything else. Don't type any enters. Put the correct answer in the list at last repeated. The form should be like this - question, option 1, option 2, option 3, option 4, the option which is the answere again repeated. The text is - ${widget.text}"
+                        "Act as a Teacher create a MCQ quiz for your student the quiz question and answer should be enclosed in square bracket and quiz answers should be in square bracket  don't type anything else. Don't type any enters. Put the correct answer in the list at last repeated. The form should be like this - question, option 1, option 2, option 3, option 4. Give the correct option in last in a form like this a,b,c,a,d,c after all question and answer are typed. The number of question should be in the table of 5. Question should be of 4 option and not of Yes or no. The text is - ${widget.text}"
                   }
                 ],
                 "temperature": 0.7
