@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:edunation/constants/constants.dart';
 import 'package:edunation/credentials.dart';
@@ -8,19 +7,19 @@ import 'package:http/http.dart' as http;
 
 Future<String> useChatAPI(String prompt) async {
   print(prompt);
-  final res = await http.post(
-      Uri.parse("https://api.openai.com/v1/chat/completions"),
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer ${Credentials().apiKey}"
-      },
-      body: jsonEncode({
-        "model": "gpt-3.5-turbo",
-        "messages": [
-          {"role": "user", "content": "$prompt"}
-        ],
-        "temperature": 0.7
-      }));
+  final res =
+      await http.post(Uri.parse("https://api.openai.com/v1/chat/completions"),
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer ${Credentials().apiKey}"
+          },
+          body: jsonEncode({
+            "model": "gpt-3.5-turbo",
+            "messages": [
+              {"role": "user", "content": "$prompt"}
+            ],
+            "temperature": 0.7
+          }));
   print(res.body);
 
   return res.body;

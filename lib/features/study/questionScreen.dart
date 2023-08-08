@@ -7,7 +7,6 @@ class QuestionScreen extends StatefulWidget {
   String? MCQ2;
   String? MCQ3;
   String? MCQ4;
-  String? correctAns;
   List<String>? remainingTextList;
   QuestionScreen(
       {super.key,
@@ -16,7 +15,6 @@ class QuestionScreen extends StatefulWidget {
       this.MCQ2,
       this.MCQ3,
       this.MCQ4,
-      this.correctAns,
       this.remainingTextList});
 
   @override
@@ -27,17 +25,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
   String answerStatus = "not";
   bool enabled = true;
   void checkQuestion(selectedOption) {
-    if (selectedOption == widget.correctAns) {
-      setState(() {
-        answerStatus = "Correct";
-        enabled = false;
-      });
-    } else {
-      setState(() {
-        answerStatus = "Wrong";
-        enabled = false;
-      });
-    }
+    setState(() {
+      answerStatus = "correct";
+      enabled = false;
+    });
   }
 
   List<String> RemoveRangeOfLIst(List<String> list, start, end) {
@@ -63,18 +54,19 @@ class _QuestionScreenState extends State<QuestionScreen> {
                         MaterialPageRoute(builder: (c) => SHomeScreen()));
                   } else {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (c) => QuestionScreen(
-                                  question: widget.remainingTextList![0],
-                                  MCQ1: widget.remainingTextList![1],
-                                  MCQ2: widget.remainingTextList![2],
-                                  MCQ3: widget.remainingTextList![3],
-                                  MCQ4: widget.remainingTextList![4],
-                                  correctAns: widget.remainingTextList![5],
-                                  remainingTextList: RemoveRangeOfLIst(
-                                      widget.remainingTextList!, 0, 5),
-                                )));
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) => QuestionScreen(
+                          question: widget.remainingTextList![0],
+                          MCQ1: widget.remainingTextList![1],
+                          MCQ2: widget.remainingTextList![2],
+                          MCQ3: widget.remainingTextList![3],
+                          MCQ4: widget.remainingTextList![4],
+                          remainingTextList: RemoveRangeOfLIst(
+                              widget.remainingTextList!, 0, 5),
+                        ),
+                      ),
+                    );
                   }
                 },
               ),
@@ -96,18 +88,19 @@ class _QuestionScreenState extends State<QuestionScreen> {
                         MaterialPageRoute(builder: (c) => SHomeScreen()));
                   } else {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (c) => QuestionScreen(
-                                  question: widget.remainingTextList![0],
-                                  MCQ1: widget.remainingTextList![1],
-                                  MCQ2: widget.remainingTextList![2],
-                                  MCQ3: widget.remainingTextList![3],
-                                  MCQ4: widget.remainingTextList![4],
-                                  correctAns: widget.remainingTextList![5],
-                                  remainingTextList: RemoveRangeOfLIst(
-                                      widget.remainingTextList!, 0, 5),
-                                )));
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) => QuestionScreen(
+                          question: widget.remainingTextList![0],
+                          MCQ1: widget.remainingTextList![1],
+                          MCQ2: widget.remainingTextList![2],
+                          MCQ3: widget.remainingTextList![3],
+                          MCQ4: widget.remainingTextList![4],
+                          remainingTextList: RemoveRangeOfLIst(
+                              widget.remainingTextList!, 0, 5),
+                        ),
+                      ),
+                    );
                   }
                 },
               ),

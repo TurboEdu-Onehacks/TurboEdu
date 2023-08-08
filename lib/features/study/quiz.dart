@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:edunation/features/study/questionScreen.dart';
 import 'package:flutter/material.dart';
@@ -55,6 +54,7 @@ class _QuizState extends State<Quiz> {
                     .replaceAll("\\", "")
                     .replaceAll("]", "")
                     .replaceAll("[", "")
+                    .replaceAll("\n\n", "\n")
                     .split("\n");
 
                 List<String> RemoveRangeOfList(
@@ -64,6 +64,7 @@ class _QuizState extends State<Quiz> {
                   return listOfRange;
                 }
 
+                print(formattedBodyList);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -73,7 +74,6 @@ class _QuizState extends State<Quiz> {
                       MCQ2: formattedBodyList[2],
                       MCQ3: formattedBodyList[3],
                       MCQ4: formattedBodyList[4],
-                      correctAns: formattedBodyList[5],
                       remainingTextList:
                           RemoveRangeOfList(formattedBodyList, 0, 5),
                     ),
